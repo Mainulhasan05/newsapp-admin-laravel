@@ -1,0 +1,37 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/rifatewu/python.rifatewu.xyz
+    - /bin/git --git-dir=REPO.git --work-tree=REPO pull origin main
+    - /bin/chown -R rifatewu:rifatewu REPO
+    - /bin/php /opt/cpanel/composer/bin/composer install --working-dir=REPO
+    - /bin/php /opt/cpanel/composer/bin/composer dump-autoload --optimize --working-dir=REPO
+    - /bin/php REPO/artisan config:cache
+    - /bin/php REPO/artisan route:cache
+    - /bin/php REPO/artisan view:cache
+    - /bin/php REPO/artisan optimize
+    - /bin/php REPO/artisan migrate --force
+    - /bin/php REPO/artisan queue:restart
+
+hooks:
+  build: |
+    # This script is executed after the Git repository is cloned/updated
+    # and dependencies are installed. You can run any additional build tasks here.
+    # For example, you can compile assets or perform other build-related tasks.
+    # Make sure to use absolute paths in your commands.
+
+  deploy: |
+    # This script is executed after the build hook when a push is made to GitHub.
+    # You can run any additional deployment tasks here, if needed.
+    # For automatic deployment when pushing to GitHub, you can add a Git pull command here.
+    export DEPLOYPATH=/home/rifatewu/python.rifatewu.xyz
+    /bin/git --git-dir=REPO.git --work-tree=REPO pull origin main
+    /bin/chown -R rifatewu:rifatewu REPO
+    /bin/php /opt/cpanel/composer/bin/composer install --working-dir=REPO
+    /bin/php /opt/cpanel/composer/bin/composer dump-autoload --optimize --working-dir=REPO
+    /bin/php REPO/artisan config:cache
+    /bin/php REPO/artisan route:cache
+    /bin/php REPO/artisan view:cache
+    /bin/php REPO/artisan optimize
+    /bin/php REPO/artisan migrate --force
+    /bin/php REPO/artisan queue:restart
