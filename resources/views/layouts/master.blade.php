@@ -18,7 +18,7 @@
         rel="stylesheet">
 
     
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
 
 </head>
 
@@ -66,8 +66,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Add Category</a>
-                        <a class="collapse-item" href="cards.html">View Category</a>
+                        <a class="collapse-item" href="{{route('category.create')}}">Add Category</a>
+                        <a class="collapse-item" href="{{route('categories.index')}}">View Category</a>
                     </div>
                 </div>
             </li>
@@ -331,8 +331,8 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="{{ asset('img/undraw_profile.svg') }}" alt="Profile Image">
+
                             </a>
                             
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
