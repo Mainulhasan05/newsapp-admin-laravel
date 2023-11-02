@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\Categories;
+use Illuminate\Support\Facades\Validator;
 
 class NewsController extends Controller
 {
@@ -23,31 +24,43 @@ class NewsController extends Controller
         // Show the create news article form with the list of categories
         return view('news.create', ['categories' => $categories]);
     }
+
     public function store(Request $request)
     {
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'category_id' => 'required|exists:categories,id',
-            'title' => 'required|max:255',
-            'description' => 'nullable',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Example validation for an image file
-            'views' => 'integer',
-            'og_image' => 'nullable|max:255',
-            'og_title' => 'nullable|max:255',
-            'og_description' => 'nullable',
-            'slug' => ['required', 'max:255', 'unique:news'],
-        ]);
+        
+        // $this->validate($request, [
+        //     'category_id' => 'required|exists:categories,id',
+        //     'title' => 'required|string|max:255',
+        //     'description' => 'nullable', // You can keep it as 'nullable' if you're allowing HTML
+        //     'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        //     'og_title' => 'string|max:255',
+        //     'og_description' => 'string',
+        //     'og_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        //     'slug' => ['required', 'string', 'max:255', 'unique:news'],
+        // ]);
 
-        // Handle image upload if an image is provided
+        $news = new News();
+        $news->category_id = $request->input('category_id');
+        $news->title = $request->input('title');
+        $news->description = $request->input('description');
+        $news->og_title = $request->input('og_title');
+        $news->og_description = $request->input('og_description');
+        $news->slug = $request->input('slug');
+
+        // Handle image and og_image uploads if provided
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
-            $validatedData['image'] = $imagePath;
+            $news->image = $imagePath;
         }
 
-        // Create the news article
-        News::create($validatedData);
+        if ($request->hasFile('og_image')) {
+            $ogImagePath = $request->file('og_image')->store('images', 'public');
+            $news->og_image = $ogImagePath;
+        }
 
-        // Redirect to the news index or a success page
+        $news->save();
+
+        // // Redirect to the news index or a success page
         return redirect()->route('news.index')->with('success', 'News article created successfully');
     }
 
@@ -72,7 +85,7 @@ class NewsController extends Controller
         $news->update($request->all());
 
         // Redirect to the news index or a success page
-        return redirect('/news');
+        return redirect()->route('news.index');
     }
 
     public function destroy($id)
@@ -82,6 +95,6 @@ class NewsController extends Controller
         $news->delete();
 
         // Redirect to the news index or a success page
-        return redirect('/news');
+        return redirect()->route('news.index');
     }
 }

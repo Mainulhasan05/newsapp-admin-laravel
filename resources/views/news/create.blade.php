@@ -28,7 +28,7 @@
 
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea name="description" id="description" class="form-control" rows="4"></textarea>
+                        <textarea id="news_description" name="description"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -48,7 +48,7 @@
 
                     <div class="form-group">
                         <label for="og_title">OG Title</label>
-                        <input type="text" name="og_title" id="og_title" class="form-control">
+                        <input type text" name="og_title" id="og_title" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -66,4 +66,12 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea#news_description', // Update the selector to match the ID of your description textarea
+            plugins: 'powerpaste advcode table lists checklist',
+            toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
+        });
+    </script>
 @endsection
