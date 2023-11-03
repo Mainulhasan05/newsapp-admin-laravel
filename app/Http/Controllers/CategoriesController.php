@@ -27,15 +27,15 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
 {
-    $this->validate($request, [
-        'name' => 'required|string|max:255',
-        'slug' => 'string|max:255',
-        'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the validation rules for your image
-        'og_title' => 'string|max:255',
-        'og_description' => 'string',
-        'og_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'parent_id' => 'nullable|exists:categories,id', // Check if the parent category exists
-    ]);
+    // $this->validate($request, [
+    //     'name' => 'required|string|max:255',
+    //     'slug' => 'string|max:255',
+    //     'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the validation rules for your image
+    //     'og_title' => 'string|max:255',
+    //     'og_description' => 'string',
+    //     'og_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+    //     'parent_id' => 'nullable|exists:categories,id', // Check if the parent category exists
+    // ]);
 
     $category = new ModelsCategories();
     $category->name = $request->input('name');

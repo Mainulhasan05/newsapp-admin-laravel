@@ -90,11 +90,8 @@ class NewsController extends Controller
 
     public function destroy($id)
     {
-        // Delete a specific news article
         $news = News::find($id);
         $news->delete();
-
-        // Redirect to the news index or a success page
         return redirect()->route('news.index');
     }
 }
