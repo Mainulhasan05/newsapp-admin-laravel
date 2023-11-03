@@ -11,6 +11,6 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: ftp.rifatewu.xyz
-        username: rifatewu@admin.rifatewu.xyz
-        password: LQ3ImNQ*D+Ag
+        server: ftp.rifatewu2.xyz
+        username: admin@admin.rifatewu2.xyz
+        password: iL{Z$]A5TGvr
