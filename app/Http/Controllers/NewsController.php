@@ -40,7 +40,7 @@ class NewsController extends Controller
         // ]);
 
         $news = new News();
-        $news->category_id = $request->input('category_id');
+        $news->category_slug = $request->input('category_slug');
         $news->title = $request->input('title');
         $news->description = $request->input('description');
         $news->og_title = $request->input('og_title');

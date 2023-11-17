@@ -17,11 +17,11 @@
                         <input type="text" name="title" id="title" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="category_id">Category</label>
-                        <select name="category_id" id="category_id" class="form-control" required>
+                        <label for="category_slug">Category</label>
+                        <select name="category_slug" id="category_slug" class="form-control" required>
                             <option value="" disabled selected>Select a Category</option>
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->slug }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
