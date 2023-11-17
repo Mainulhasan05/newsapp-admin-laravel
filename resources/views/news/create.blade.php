@@ -48,7 +48,7 @@
 
                     <div class="form-group">
                         <label for="og_title">OG Title</label>
-                        <input type text" name="og_title" id="og_title" class="form-control">
+                        <input type="text" name="og_title" id="og_title" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -56,10 +56,7 @@
                         <textarea name="og_description" id="og_description" class="form-control" rows="4"></textarea>
                     </div>
 
-                    <div class="form-group">
-                        <label for="slug">Slug</label>
-                        <input type="text" name="slug" id="slug" class="form-control" required>
-                    </div>
+                    
 
                     <button type="submit" class="btn btn-primary">Create</button>
                 </form>

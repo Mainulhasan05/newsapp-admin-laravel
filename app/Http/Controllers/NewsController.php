@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\Categories;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Str;
 class NewsController extends Controller
 {
     public function index()
@@ -45,18 +45,19 @@ class NewsController extends Controller
         $news->description = $request->input('description');
         $news->og_title = $request->input('og_title');
         $news->og_description = $request->input('og_description');
-        $news->slug = $request->input('slug');
+        // $news->slug = $request->input('slug');
+        // generate slug from title
+        $news->slug=  Str::slug($request->input('title'));
+
 
         // Handle image and og_image uploads if provided
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
             $news->image = $imagePath;
+            $news->og_image = $imagePath;
         }
 
-        if ($request->hasFile('og_image')) {
-            $ogImagePath = $request->file('og_image')->store('images', 'public');
-            $news->og_image = $ogImagePath;
-        }
+        
 
         $news->save();
 
