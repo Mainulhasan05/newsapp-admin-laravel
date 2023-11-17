@@ -13,7 +13,7 @@
                     <thead>
                         <tr>
                             <th>Title</th>
-                            <th>Description</th>
+                            
                             <th>Image</th>
                             <th>Views</th>
                             <th>Actions</th>
@@ -23,7 +23,7 @@
                         @foreach($news as $article)
                             <tr>
                                 <td>{{ $article->title }}</td>
-                                <td>{{ $article->description }}</td>
+                                
                                 <td>
                                     @if($article->image)
                                         <img src="{{ asset('storage/' . $article->image) }}" alt="{{ $article->title }}" width="100px" height="100px">
