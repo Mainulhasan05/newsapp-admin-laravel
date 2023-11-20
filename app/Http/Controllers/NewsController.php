@@ -79,9 +79,9 @@ class NewsController extends Controller
 
     public function edit($id)
     {
-        // Show the edit form for a specific news article
         $news = News::find($id);
-        return view('news.edit', compact('news'));
+        $categories = Categories::all();
+        return view('news.edit', compact('news', 'categories'));
     }
 
     public function update(Request $request, $id)
