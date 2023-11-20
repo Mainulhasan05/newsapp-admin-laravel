@@ -13,10 +13,9 @@ class NewsController extends Controller
     public function index()
     {
         // get news in descending order
-        $news = News::latest()->paginate(5);
-        print_r($news);
-        return $news;
-        // return view('news.index', compact('news'));
+        $news = News::latest()->paginate(3);
+        // return $news;
+        return view('news.index', compact('news'));
     }
 
     public function create()

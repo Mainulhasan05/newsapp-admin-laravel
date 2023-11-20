@@ -45,7 +45,46 @@
                         @endforeach
                     </tbody>
                 </table>
+                
+                
+            </div>
+            <div class="text-center">
+                
             </div>
         </div>
     </div>
+    <script>
+        tinymce.init({
+            selector: '#news_description'
+        });
+    </script>
+    <style>
+        
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination .page-item {
+    margin: 0 5px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.pagination .page-link {
+    color: #007bff;
+}
+svg{
+    display: none;
+}
+
+    </style>
+    <br><br>
+    <div class="pagination">
+        {{ $news->links() }}
+    </div>
+    <br><br>
 @endsection
