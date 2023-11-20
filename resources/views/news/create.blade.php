@@ -35,7 +35,23 @@
                         <label for="image">Image</label>
                         <input type="file" name="image" id="image" class="form-control-file">
                     </div>
+                    {{-- create two checkbox is_header and is_featured --}}
 
+                    <div class="form-group">
+                        <input type="checkbox" name="is_header" id="is_header" class="">
+                        <label for="is_header">Is Header</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" name="is_featured" id="is_featured" class="">
+                        <label for="is_featured">Is Featured</label>
+                    </div>
+
+                    {{-- is_published --}}
+                    <div class="form-group">
+                        <input type="checkbox" name="is_published" id="is_published" class="">
+                        <label for="is_published">Is Published</label>
+                    </div>
                     <div class="form-group">
                         <label for="views">Views</label>
                         <input type="number" name="views" id="views" class="form-control" value="0">

@@ -14,7 +14,9 @@ class NewsController extends Controller
     {
         // get news in descending order
         $news = News::latest()->paginate(5);
-        return view('news.index', compact('news'));
+        print_r($news);
+        return $news;
+        // return view('news.index', compact('news'));
     }
 
     public function create()
@@ -46,12 +48,15 @@ class NewsController extends Controller
         $news->description = $request->input('description');
         $news->og_title = $request->input('og_title');
         $news->og_description = $request->input('og_description');
+
         // $news->slug = $request->input('slug');
         // generate slug from title
         $news->slug=  Str::slug($request->input('title'));
+        // store the value of two check box, is_featured and is_published and is_featured
+        $news->is_featured = $request->input('is_featured') ? true : false;
+        $news->is_published = $request->input('is_published') ? true : false;
+        $news->is_published = $request->input('is_header') ? true : false;
 
-
-        // Handle image and og_image uploads if provided
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
             $news->image = $imagePath;
