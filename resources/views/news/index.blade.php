@@ -34,7 +34,7 @@
                                 <td>{{ $article->views }}</td>
                                 <td>
                                     <a href="{{ route('news.show', $article->id) }}" class="btn btn-primary">View</a>
-                                    <a href="{{ route('news.edit', $article->id)/edit }}" class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('news.edit', ['id' => $article->id]) }}" class="btn btn-warning">Edit</a>
                                     <form action="{{ route('news.destroy', $article->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
