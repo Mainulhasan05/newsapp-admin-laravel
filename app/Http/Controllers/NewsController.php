@@ -54,7 +54,7 @@ class NewsController extends Controller
         // store the value of two check box, is_featured and is_published and is_featured
         $news->is_featured = $request->input('is_featured') ? true : false;
         $news->is_published = $request->input('is_published') ? true : false;
-        $news->is_published = $request->input('is_header') ? true : false;
+        $news->is_header = $request->input('is_header') ? true : false;
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
@@ -88,6 +88,10 @@ class NewsController extends Controller
     {
         // Update a specific news article
         $news = News::find($id);
+        // update is_header, is_featured and is_published
+        $news->is_featured = $request->input('is_featured') ? true : false;
+        $news->is_published = $request->input('is_published') ? true : false;
+        $news->is_header = $request->input('is_header') ? true : false;
         $news->update($request->all());
 
         // Redirect to the news index or a success page
