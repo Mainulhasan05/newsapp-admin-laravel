@@ -92,6 +92,12 @@ class NewsController extends Controller
         $news->is_featured = $request->input('is_featured') ? true : false;
         $news->is_published = $request->input('is_published') ? true : false;
         $news->is_header = $request->input('is_header') ? true : false;
+        // if there is a new image, delete the old one and store the new one
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $news->image = $imagePath;
+        }
+        
         $news->update($request->all());
 
         // Redirect to the news index or a success page
