@@ -24,11 +24,17 @@
                         </div>
 
                         <div class="mb-3">
-                            <a href="" class="text-decoration-none">Forgot Password?</a>
+                            <a href="/forgot" class="text-decoration-none">Forgot Password?</a>
                         </div>
 
                         <div class="mb-3 d-grid">
                             <input type="submit" class="btn btn-dark btn-block rounded-0" id="login_btn" value="Login">
+                        </div>
+                        
+                        <div class="text-center text-secondary">
+                            <div>
+                                Don't have an account? <a href="" class="text-decoration-none">Register Here</a>
+                            </div>
                         </div>
 
                     </form>
