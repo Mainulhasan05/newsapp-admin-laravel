@@ -6,7 +6,7 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\NewsController;
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('login');
 });
 
 // 
