@@ -9,6 +9,11 @@ Route::get('/', function () {
     return view('login');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+// ->middleware(['auth'])->name('dashboard');
+
 // 
 Route::get('/categories', [CategoriesController::class, 'index'])->name('categories.index');
 Route::post('/categories', [CategoriesController::class, 'store'])->name('categories.store');
