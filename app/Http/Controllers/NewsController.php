@@ -58,6 +58,7 @@ class NewsController extends Controller
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
+            print_r($imagePath);
             $news->image = $imagePath;
             $news->og_image = $imagePath;
         }

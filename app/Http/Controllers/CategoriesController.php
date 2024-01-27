@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Models\Categories as ModelsCategories;
+use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
 {
@@ -69,17 +70,29 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Categories $categories)
+    public function edit($id)
     {
-        //
+        $category=Categories::find($id);
+        $categories = Categories::select('id', 'name')->whereNull('parent_id')->where('id', '!=', $id)->get();
+        
+        
+        return view("categories.edit",compact("category","categories")); 
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Categories $categories)
+    public function update(Request $request, $id)
     {
-        //
+        $validate=$request->validate([
+            'name'=>'required',            
+        ]);
+        $data=array();
+        $data['name']=$request->input('name');
+        // generate slug based on name
+        $data['slug']=Str::slug($request->input('name'));
+        Categories::where('id',$id)->update($data);
+        return redirect()->route('categories.index')->with('success','');
     }
 
     /**
