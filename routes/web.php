@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
     return view('login');
@@ -38,3 +39,7 @@ Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
 
 Route::put('/news/{id}', [NewsController::class, 'update'])->name('news.update');
 Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
+
+// Post routes
+Route::get("/post/create", [PostController::class, "create"])->name("post.create");
+

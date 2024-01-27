@@ -35,6 +35,8 @@
     <script src="{{asset("vendor/chart.js/Chart.min.js")}}"></script>
     <script src="{{asset("js/demo/chart-area-demo.js")}}"></script>
     <script src="{{asset("js/demo/chart-pie-demo.js")}}"></script>
+    <script src="{{asset("js/tinymce/tinymce.min.js")}}"></script>
+    <script src="{{asset("js/main.js")}}"></script>
 
 </body>
 
