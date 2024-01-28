@@ -82,21 +82,22 @@
                     </div>
 
                     {{-- create two checkbox is_header and is_featured --}}
-
+                    <hr>
+                    <h3 class="text-center">Extra Option</h3>
                     <div class="form-group">
-                        <input type="checkbox" name="is_header" id="is_header" class="">
-                        <label for="is_header">Is Header</label>
+                        <input type="checkbox" name="headline" id="is_header" class="">
+                        <label for="is_header">Is Headline</label>
                     </div>
 
                     <div class="form-group">
-                        <input type="checkbox" name="is_featured" id="is_featured" class="">
-                        <label for="is_featured">Is Featured</label>
+                        <input type="checkbox" name="first_sectrion" id="is_featured" class="">
+                        <label for="is_featured">Is First Section</label>
                     </div>
 
-                    {{-- is_published --}}
+                    
                     <div class="form-group">
-                        <input type="checkbox" name="is_published" id="is_published" class="">
-                        <label for="is_published">Is Published</label>
+                        <input type="checkbox" name="first_section_thumbnail" id="is_published" class="">
+                        <label for="is_published">Is First Section Thumbnail</label>
                     </div>
                     <div class="form-group">
                         <label for="views">Views</label>
