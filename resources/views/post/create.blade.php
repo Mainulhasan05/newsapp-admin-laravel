@@ -35,11 +35,9 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="title">SubCategory</label>
-                            <select class="form-control" name="sub_category_id" id="">
+                            <select class="form-control" name="subcategory_id" id="subcategory_id">
                                 <option value="">Select Category</option>
-                                @foreach ($categories as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
+                                
                             </select>
                         </div>
                     </div>
@@ -147,10 +145,10 @@
                     dataType:"json",
                     success:function(data) {
                         console.log(data);
-                        // $("#subcategory_id").empty();
-                        //     $.each(data,function(key,value){
-                        //         $("#subcategory_id").append('<option value="'+value.id+'">'+value.name+'</option>');
-                        //     });
+                         $("#subcategory_id").empty();
+                             $.each(data,function(key,value){
+                                 $("#subcategory_id").append('<option value="'+value.id+'">'+value.name+'</option>');
+                             });
                     },
                 });
             } else {

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Districts;
+use App\Models\SubDistricts;
 use Illuminate\Http\Request;
 use App\Models\Categories;
 // require './vendor/autoload.php';
@@ -37,5 +39,8 @@ class PostController extends Controller
     public function getSubcategory($category_id){
         $subcategories = Categories::select('id', 'name')->where('parent_id', $category_id)->get();
         return response()->json($subcategories);
+    }
+    public function getSubdistricts($district_id){
+        $subdistricts = SubDistricts::select('id','name')->where('district_id', $district_id)->get();
     }
 }

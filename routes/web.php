@@ -46,3 +46,4 @@ Route::get("/post/create", [PostController::class, "create"])->name("post.create
 
 // json dependency
 Route::get('/get/subcategory/{category_id}', [PostController::class, 'getSubcategory'])->name('get.subcategory');
+Route::get('/get/subdistricts/{district_id}', [PostController::class, 'getSubdistricts'])->name('get.subdistricts');
