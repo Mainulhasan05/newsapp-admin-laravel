@@ -33,4 +33,9 @@ class PostController extends Controller
 
         return response()->json(['success'=>'Image Uploaded Successfully.']);
     }
+
+    public function getSubcategory($category_id){
+        $subcategories = Categories::select('id', 'name')->where('parent_id', $category_id)->get();
+        return response()->json($subcategories);
+    }
 }

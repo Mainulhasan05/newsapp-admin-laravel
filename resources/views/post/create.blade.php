@@ -26,7 +26,7 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="title">Category</label>
-                            <select class="form-control" name="category_id" id="">
+                            <select class="form-control" name="category_id" id="categorySelect">
                                 <option value="">Select Category</option>
                                 @foreach ($categories as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -133,5 +133,31 @@
             plugins: 'powerpaste advcode table lists checklist',
             toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
         });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#categorySelect').on('change', function() {
+            console.log('object')
+            var category_id = $(this).val();
+            if(category_id) {
+                $.ajax({
+                    url: "{{  url('/get/subcategory/') }}/"+category_id,
+                    type:"GET",
+                    dataType:"json",
+                    success:function(data) {
+                        console.log(data);
+                        // $("#subcategory_id").empty();
+                        //     $.each(data,function(key,value){
+                        //         $("#subcategory_id").append('<option value="'+value.id+'">'+value.name+'</option>');
+                        //     });
+                    },
+                });
+            } else {
+                alert('danger');
+            }
+        });
+    });
+
     </script>
 @endsection

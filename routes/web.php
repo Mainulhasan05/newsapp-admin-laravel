@@ -43,3 +43,6 @@ Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('news.dest
 // Post routes
 Route::get("/post/create", [PostController::class, "create"])->name("post.create");
 
+
+// json dependency
+Route::get('/get/subcategory/{category_id}', [PostController::class, 'getSubcategory'])->name('get.subcategory');
