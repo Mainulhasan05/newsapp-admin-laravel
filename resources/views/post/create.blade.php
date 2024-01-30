@@ -43,6 +43,26 @@
                     </div>
 
 
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="title">Districts</label>
+                            <select class="form-control" name="district_id" id="districtSelect">
+                                <option value="">Select Districts</option>
+                                @foreach ($districts as $item)
+                                    <option value="{{ $item->id }}">{{ $item->district_bn }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="title">SubDistricts</label>
+                            <select class="form-control" name="subdistrict_id" id="subdistrict_id">
+                                <option value="">Select Category</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+
+
 
                     <div class="form-group">
                         <label for="image">Image</label>
@@ -148,6 +168,32 @@
                          $("#subcategory_id").empty();
                              $.each(data,function(key,value){
                                  $("#subcategory_id").append('<option value="'+value.id+'">'+value.name+'</option>');
+                             });
+                    },
+                });
+            } else {
+                alert('danger');
+            }
+        });
+    });
+
+    </script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#districtSelect').on('change', function() {
+            
+            var district_id = $(this).val();
+            if(district_id) {
+                $.ajax({
+                    url: "{{  url('/get/subdistricts/') }}/"+district_id,
+                    type:"GET",
+                    dataType:"json",
+                    success:function(data) {
+                        console.log(data);
+                         $("#subdistrict_id").empty();
+                             $.each(data,function(key,value){
+                                 $("#subdistrict_id").append('<option value="'+value.id+'">'+value.subdistrict_bn+'</option>');
                              });
                     },
                 });

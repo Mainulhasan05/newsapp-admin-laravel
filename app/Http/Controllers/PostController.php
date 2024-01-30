@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Districts;
-use App\Models\SubDistricts;
+
 use Illuminate\Http\Request;
 use App\Models\Categories;
+use App\Models\Subdistricts;
 // require './vendor/autoload.php';
  
 use Intervention\Image\ImageManager;
@@ -18,7 +19,8 @@ class PostController extends Controller
     }
     public function create(Request $request){
         $categories=Categories::select('id', 'name')->whereNull('parent_id')->get();
-        return view('post.create',compact('categories'));
+        $districts=Districts::select('id', 'district_bn')->get();
+        return view('post.create',compact('categories', 'districts'));
     }
 
     public function store(Request $request){
@@ -41,6 +43,7 @@ class PostController extends Controller
         return response()->json($subcategories);
     }
     public function getSubdistricts($district_id){
-        $subdistricts = SubDistricts::select('id','name')->where('district_id', $district_id)->get();
+        $subdistricts = Subdistricts::select('id','subdistrict_bn')->where('district_id', $district_id)->get();
+        return $subdistricts;
     }
 }
