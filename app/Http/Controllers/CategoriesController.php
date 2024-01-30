@@ -20,7 +20,8 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view("categories.create");
+        $categories = Categories::select('id', 'name')->whereNull('parent_id')->get();
+        return view("categories.create", compact("categories"));
     }
 
     /**

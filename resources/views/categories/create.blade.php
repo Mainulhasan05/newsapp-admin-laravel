@@ -42,7 +42,9 @@
                 <label for="parent_id">Parent Category:</label>
                 <select name="parent_id" class="form-control" id="parent_id">
                     <option value="">Select Parent Category</option>
-                    {{-- You can dynamically populate the options here --}}
+                    @foreach ($categories as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endforeach
                 </select>
             </div>
 
