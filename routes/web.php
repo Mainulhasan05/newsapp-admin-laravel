@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\DistrictController;
 
 Route::get('/', function () {
     return view('login');
@@ -42,6 +43,12 @@ Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('news.dest
 
 // Post routes
 Route::get("/post/create", [PostController::class, "create"])->name("post.create");
+
+
+// district routes
+Route::get('/districts', [DistrictController::class, 'index'])->name('districts.index');
+Route::get('/districts/create',[DistrictController::class,'create'])->name('districts.create');
+Route::post('/districts',[DistrictController::class,'store'])->name('districts.store');
 
 
 // json dependency
