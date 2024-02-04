@@ -15,7 +15,7 @@
                 @if(isset($news))
                     <h1>Edit News Article</h1>
                     <form action="{{ route('news.update', $news->id) }}" method="POST" enctype="multipart/form-data">
-                        @method('PUT') {{-- Use the PUT method for updates --}}
+                        @method('PUT') 
                 @else
                     <h1>Create News Article</h1>
                     <form action="{{ route('news.store') }}" method="POST" enctype="multipart/form-data">

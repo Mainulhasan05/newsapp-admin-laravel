@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Add Category
+    Add District
 @endsection
 
 @section('content')

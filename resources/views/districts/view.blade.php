@@ -22,14 +22,14 @@
                         <td>{{ $district['district_bn'] }}</td>
                         <td>{{ $district['district_en'] }}</td>
                         
-                        {{-- <td>
-                            <a href="{{ route('district.edit', $district['id']) }}" class="btn btn-primary">Edit</a>
-                            <form action="{{ route('district.destroy', $district['id']) }}" method="POST">
+                        <td>
+                            <a href="{{ route('districts.edit', $district['id']) }}" class="btn btn-primary">Edit</a>
+                            <form action="{{ route('districts.destroy', $district['id']) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button> 
                             </form>
-                        </td> --}}
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

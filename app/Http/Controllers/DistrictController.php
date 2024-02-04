@@ -27,12 +27,13 @@ class DistrictController extends Controller
      */
     public function store(Request $request)
     {
-        // validate the request
+        
         $request->validate([
             'district_en'=>'required'
         ]);
         $district=new Districts();
-        $district->name=$request->name;
+        $district->district_en=$request->district_en;
+        $district->district_bn=$request->district_bn;
         $district->save();
         return redirect()->route('districts.index');
     }
@@ -50,7 +51,9 @@ class DistrictController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //  get the district by id
+        $district=Districts::find($id);
+        return view('districts.edit',compact('district'));
     }
 
     /**
@@ -58,7 +61,14 @@ class DistrictController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'district_en'=>'required'
+        ]);
+        $district=Districts::find($id);
+        $district->district_en=$request->district_en;
+        $district->district_bn=$request->district_bn;
+        $district->save();
+        return redirect()->route('districts.index');
     }
 
     /**
@@ -66,6 +76,8 @@ class DistrictController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $district=Districts::find($id);
+        $district->delete();
+        return redirect()->route('districts.index');
     }
 }
