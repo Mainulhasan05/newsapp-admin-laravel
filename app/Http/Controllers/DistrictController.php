@@ -27,9 +27,14 @@ class DistrictController extends Controller
      */
     public function store(Request $request)
     {
-        // $validate=$this->validate($request->all(),[
-
-        // ]);
+        // validate the request
+        $request->validate([
+            'district_en'=>'required'
+        ]);
+        $district=new Districts();
+        $district->name=$request->name;
+        $district->save();
+        return redirect()->route('districts.index');
     }
 
     /**
