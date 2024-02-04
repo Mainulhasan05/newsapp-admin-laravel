@@ -56,6 +56,21 @@
                 </div>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDistricts"
+                    aria-expanded="true" aria-controls="collapseDistricts">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Districts</span>
+                </a>
+                <div id="collapseDistricts" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Components:</h6>
+                        <a class="collapse-item" href="{{route('districts.create')}}">Add District</a>
+                        <a class="collapse-item" href="{{route('districts.index')}}">All District</a>
+                    </div>
+                </div>
+            </li>
+
             
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
