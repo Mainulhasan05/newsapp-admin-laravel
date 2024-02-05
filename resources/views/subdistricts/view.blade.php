@@ -26,8 +26,8 @@
                         <td>{{$district->district?->district_en}}</td>
                         
                         <td>
-                            <a href="{{ route('districts.edit', $district['id']) }}" class="btn btn-primary">Edit</a>
-                            <form action="{{ route('districts.destroy', $district['id']) }}" method="POST">
+                            <a href="{{ route('subdistricts.edit', $district['id']) }}" class="btn btn-primary">Edit</a>
+                            <form action="{{ route('subdistricts.destroy', $district['id']) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button> 
