@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\SubdistrictController;
 
 Route::get('/', function () {
     return view('login');
@@ -53,6 +54,13 @@ Route::get('/districts/{id}/edit',[DistrictController::class,'edit'])->name('dis
 Route::put('/districts/{id}',[DistrictController::class,'update'])->name('districts.update');
 Route::delete('/districts/{id}',[DistrictController::class,'destroy'])->name('districts.destroy');
 
+// subdistrict routes
+Route::get('/subdistricts', [SubdistrictController::class, 'index'])->name('subdistricts.index');
+Route::get('/subdistricts/create',[SubdistrictController::class,'create'])->name('subdistricts.create');
+Route::post('/subdistricts',[SubdistrictController::class,'store'])->name('subdistricts.store');
+Route::get('/subdistricts/{id}/edit',[SubdistrictController::class,'edit'])->name('subdistricts.edit');
+Route::put('/subdistricts/{id}',[SubdistrictController::class,'update'])->name('subdistricts.update');
+Route::delete('/subdistricts/{id}',[SubdistrictController::class,'destroy'])->name('subdistricts.destroy');
 
 // json dependency
 Route::get('/get/subcategory/{category_id}', [PostController::class, 'getSubcategory'])->name('get.subcategory');
