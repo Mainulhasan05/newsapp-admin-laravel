@@ -46,6 +46,9 @@ Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('news.dest
 // Post routes
 Route::get("/post/create", [PostController::class, "create"])->name("post.create");
 Route::post("/post", [PostController::class, "store"])->name("post.store");
+Route::get("/post", [PostController::class, "index"])->name("post.index");
+Route::get("/post/{id}/edit", [PostController::class, "edit"])->name("post.edit");
+Route::put("/post/{id}", [PostController::class, "update"])->name("post.update");
 
 
 // district routes

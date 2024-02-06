@@ -16,7 +16,8 @@ use Intervention\Image\Drivers\Imagick\Driver;
 class PostController extends Controller
 {
     public function index(Request $request){
-        
+        $posts=Post::with('category', 'sub_category', 'district', 'sub_district')->get();
+        return view('post.index',compact('posts'));
     }
     public function create(Request $request){
         $categories=Categories::select('id', 'name')->whereNull('parent_id')->get();
@@ -35,6 +36,7 @@ class PostController extends Controller
         $post=new Post();
         $post->title_bn=$request->title_bn;
         $post->description_bn=$request->description_bn;
+        $post->description_en=$request->description_en;
         $post->category_id=$request->category_id;
         $post->sub_category_id=$request->subcategory_id;
         $post->district_id=$request->district_id;
@@ -49,6 +51,9 @@ class PostController extends Controller
             $image->move($destinationPath, $name);
             $post->image=$name;
         }
+        $post->headline=$request->has('headline')?1:0;
+        $post->first_sectrion=$request->has('first_sectrion')?1:0;
+        $post->first_section_thumbnail=$request->has('first_section_thumbnail')?1:0;
         // $post->user_id=auth()->user()->id;
         $post->save();
         return redirect()->back()->with('success', 'Post created successfully');
