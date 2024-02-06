@@ -7,6 +7,7 @@ use App\Models\Districts;
 use Illuminate\Http\Request;
 use App\Models\Categories;
 use App\Models\Subdistricts;
+use App\Models\Post;
 // require './vendor/autoload.php';
  
 use Intervention\Image\ImageManager;
@@ -24,10 +25,38 @@ class PostController extends Controller
     }
 
     public function store(Request $request){
+        $validate=$request->validate([
+            'title_bn'=>'required',
+            'description_bn'=>'required',
+            'category_id'=>'required',
+            'district_id'=>'required',
+            // 'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $post=new Post();
+        $post->title_bn=$request->title_bn;
+        $post->description_bn=$request->description_bn;
+        $post->category_id=$request->category_id;
+        $post->sub_category_id=$request->subcategory_id;
+        $post->district_id=$request->district_id;
+        $post->sub_district_id=$request->subdistrict_id;
+        $post->tags_bn=$request->tags_bn;
+        $post->title_en=$request->title_en;
+        // check image
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $name);
+            $post->image=$name;
+        }
+        // $post->user_id=auth()->user()->id;
+        $post->save();
+        return redirect()->back()->with('success', 'Post created successfully');
 
-        $image = ImageManager::imagick()->read('images/example.jpg');
 
-        $image->resize(300, 200);
+        // $image = ImageManager::imagick()->read('images/example.jpg');
+
+        // $image->resize(300, 200);
     }
 
     public function resizeImage(Request $request){

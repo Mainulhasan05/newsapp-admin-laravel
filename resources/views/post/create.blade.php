@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Create Post Article</h1>
-                <form action="{{ route('news.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="row">
