@@ -7,6 +7,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\SubdistrictController;
+use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {
     return view('login');
@@ -65,3 +66,8 @@ Route::delete('/subdistricts/{id}',[SubdistrictController::class,'destroy'])->na
 // json dependency
 Route::get('/get/subcategory/{category_id}', [PostController::class, 'getSubcategory'])->name('get.subcategory');
 Route::get('/get/subdistricts/{district_id}', [PostController::class, 'getSubdistricts'])->name('get.subdistricts');
+
+Route::get('/cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
