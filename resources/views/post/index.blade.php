@@ -8,39 +8,44 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Post Articles</h1>
+                <div class="d-flex justify-content-between">
+                    <h1>Post Articles</h1>
+                    <button>
+                        <a href="{{ route('post.create') }}" class="btn btn-primary">Create</a>
+                    </button>
+                </div>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Title</th>
-                            
-                            {{-- <th>Image</th>
-                            <th>Views</th>
-                            <th>Actions</th> --}}
+                            <th>Category</th>
+                            <th>Image</th>
+                            {{-- <th>Views</th> --}}
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($posts as $article)
                             <tr>
                                 <td>{{ $article->title_bn }}</td>
-                                
-                                {{-- <td>
+                                <td>{{$article->category->name}}</td>
+                                <td>
                                     @if($article->image)
-                                        <img src="{{ asset('storage/' . $article->image) }}" alt="{{ $article->title }}" width="100px" height="100px">
+                                        <img src="{{ asset('/images'."/" . $article->image) }}" alt="{{ $article->title_bn }}" width="100px" height="100px">
                                     @else
                                         No Image
                                     @endif
-                                </td> --}}
+                                </td>
                                 {{-- <td>{{ $article->views }}</td> --}}
-                                {{-- <td>
-                                    <a href="{{ route('news.show', $article->id) }}" class="btn btn-primary">View</a>
-                                    <a href="{{ route('news.edit', ['id' => $article->id]) }}" class="btn btn-warning">Edit</a>
-                                    <form action="{{ route('news.destroy', $article->id) }}" method="POST">
+                                <td>
+                                    
+                                    <a href="{{ route('post.edit', ['id' => $article->id]) }}" class="btn btn-warning">Edit</a>
+                                    <form action="{{ route('post.destroy', $article->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
-                                </td> --}}
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

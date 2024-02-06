@@ -7,7 +7,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-            <h1>Sub Districts</h1>
+                <div class="d-flex justify-content-between">
+                    <h1>Subdistricts</h1>
+                    <button class="btn">
+                        <a href="{{ route('subdistricts.create') }}" class="btn btn-primary">Create</a>
+                    </button>
+                </div>
             <table class="table table-bordered">
                 <thead>
                     <tr>
