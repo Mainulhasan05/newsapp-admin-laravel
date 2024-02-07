@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -17,18 +18,20 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Title</th>
                             <th>Category</th>
+                            <th>Subcategory</th>
+                            <th>Title</th>
                             <th>Image</th>
-                            {{-- <th>Views</th> --}}
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($posts as $article)
                             <tr>
-                                <td>{{ $article->title_bn }}</td>
                                 <td>{{$article->category->name}}</td>
+                                <td>{{$article->sub_category->name}}</td>
+                                <td>{{ $article->title_bn }}</td>
+                                
                                 <td>
                                     @if($article->image)
                                         <img src="{{ asset('/images'."/" . $article->image) }}" alt="{{ $article->title_bn }}" width="100px" height="100px">
@@ -49,6 +52,15 @@
                             </tr>
                         @endforeach
                     </tbody>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Subcategory</th>
+                            <th>Title</th>
+                            <th>Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
                 </table>
                 
                 

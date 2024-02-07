@@ -18,6 +18,7 @@ class PostController extends Controller
     public function index(Request $request){
         $posts=Post::with('category', 'sub_category', 'district', 'sub_district')->get();
         return view('post.index',compact('posts'));
+        // return response()->json($posts);
     }
     public function create(Request $request){
         $categories=Categories::select('id', 'name')->whereNull('parent_id')->get();
@@ -110,9 +111,11 @@ class PostController extends Controller
         if($request->hasFile('image')){
             $image = $request->file('image');
             $name = time().'.'.$image->getClientOriginalExtension();
+            $image = ImageManager::imagick()->read($image);
+            $image=$image->resize(200, 200);
             $destinationPath = public_path('/images');
-            $image->move($destinationPath, $name);
-            $post->image=$name;
+            $image->save($destinationPath, $name);
+            $post->image=$name;          
         }
         $post->headline=$request->has('headline')?1:0;
         $post->first_sectrion=$request->has('first_sectrion')?1:0;

@@ -24,7 +24,11 @@
 </head>
 
 <body id="page-top">
-
+    <style>
+        thead{
+            color: black;
+        }
+    </style>
     @yield('main_content')
 
 
