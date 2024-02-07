@@ -11,8 +11,16 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        $categories = Categories::all();
-        return view("categories.view", compact("categories"));
+        // I want to get all categories and the name of their parent category
+        // $categories = ModelsCategories::select('id', 'name', 'parent_id')->with('parent_id:id,name')->get();
+        
+        // return response()->json($categories);
+        $categories = ModelsCategories::select('id', 'name', 'parent_id')
+        ->with('parent_id:id,name') // Eager load the parent relationship
+        ->get();
+return view("categories.view", compact("categories"));
+// Return the categories as JSON response
+// return response()->json($categories[6]);
     }
 
     /**
@@ -41,21 +49,12 @@ class CategoriesController extends Controller
 
     $category = new ModelsCategories();
     $category->name = $request->input('name');
-    $category->slug = $request->input('slug');
+    $category->slug = Str::slug($request->input('name'));
     $category->og_title = $request->input('og_title');
     $category->og_description = $request->input('og_description');
     $category->parent_id = $request->input('parent_id');
 
-    // Handle image and og_image uploads if provided
-    if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('categories', 'public');
-        $category->image = $imagePath;
-    }
-
-    if ($request->hasFile('og_image')) {
-        $ogImagePath = $request->file('og_image')->store('categories', 'public');
-        $category->og_image = $ogImagePath;
-    }
+    
 
     $category->save();
 
@@ -90,8 +89,12 @@ class CategoriesController extends Controller
         ]);
         $data=array();
         $data['name']=$request->input('name');
-        // generate slug based on name
         $data['slug']=Str::slug($request->input('name'));
+        // check if parent_id is present then update it
+        if($request->parent_id){
+            $data['parent_id']=$request->parent_id;
+        }
+
         Categories::where('id',$id)->update($data);
         return redirect()->route('categories.index')->with('success','');
     }

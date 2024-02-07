@@ -13,14 +13,9 @@
                 <input type="text" name="name" class="form-control" id="name" required>
             </div>
 
-            <div class="form-group">
-                <label for="slug">Slug:</label>
-                <input type="text" name="slug" class="form-control" id="slug">
-            </div>
-
-            <div class="form-group">
-                <label for="image">Image:</label>
-                <input type="file" name="image" class="form-control-file" id="image">
+            <hr>
+            <div class="text-center">
+                <h3>SEO Information (All Optional)</h3>
             </div>
 
             <div class="form-group">
