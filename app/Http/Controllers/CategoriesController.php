@@ -16,11 +16,11 @@ class CategoriesController extends Controller
         
         // return response()->json($categories);
         $categories = ModelsCategories::select('id', 'name', 'parent_id')
-        ->with('parent_id:id,name') // Eager load the parent relationship
-        ->get();
+        ->with('parent_id:id,name')->paginate(20);
+        
 return view("categories.view", compact("categories"));
 // Return the categories as JSON response
-// return response()->json($categories[6]);
+// return response()->json($categories);
     }
 
     /**

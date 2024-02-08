@@ -13,7 +13,6 @@
                     <tr>
                         <th>Category Name</th>
                         <th>Parent Category</th>
-                        
                         <th>Category Action</th>
                     </tr>
                 </thead>
@@ -36,8 +35,16 @@
                     </tr>
                     @endforeach
                 </tbody>
+                <thead>
+                    <tr>
+                        <th>Category Name</th>
+                        <th>Parent Category</th>
+                        <th>Category Action</th>
+                    </tr>
+                </thead>
             </table>
             </div>
         </div>    
     </div>
+    {{ $categories->links() }}
 @endsection
