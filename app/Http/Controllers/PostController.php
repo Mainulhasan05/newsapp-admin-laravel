@@ -128,6 +128,11 @@ class PostController extends Controller
     public function destroy(Request $request, $id){
         $post=Post::find($id);
         $post->delete();
+        // delete the image
+        $image_path = public_path().'/images/'.$post->image;
+        if(file_exists($image_path)){
+            unlink($image_path);
+        }
         return redirect()->back()->with('success', 'Post deleted successfully');
     }
 }
