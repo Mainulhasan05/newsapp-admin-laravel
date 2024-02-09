@@ -9,6 +9,12 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Create Post Article</h1>
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
                 <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
@@ -37,7 +43,7 @@
                             <label for="title">SubCategory</label>
                             <select class="form-control" name="subcategory_id" id="subcategory_id">
                                 <option value="">Select Category</option>
-                                
+
                             </select>
                         </div>
                     </div>
@@ -57,7 +63,7 @@
                             <label for="title">SubDistricts</label>
                             <select class="form-control" name="subdistrict_id" id="subdistrict_id">
                                 <option value="">Select Category</option>
-                                
+
                             </select>
                         </div>
                     </div>
@@ -112,7 +118,7 @@
                         <label for="is_featured">Is First Section</label>
                     </div>
 
-                    
+
                     <div class="form-group">
                         <input type="checkbox" name="first_section_thumbnail" id="is_published" class="">
                         <label for="is_published">Is First Section Thumbnail</label>
@@ -154,54 +160,54 @@
     </script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script type="text/javascript">
-    $(document).ready(function() {
-        $('#categorySelect').on('change', function() {
-            console.log('object')
-            var category_id = $(this).val();
-            if(category_id) {
-                $.ajax({
-                    url: "{{  url('/get/subcategory/') }}/"+category_id,
-                    type:"GET",
-                    dataType:"json",
-                    success:function(data) {
-                        console.log(data);
-                         $("#subcategory_id").empty();
-                             $.each(data,function(key,value){
-                                 $("#subcategory_id").append('<option value="'+value.id+'">'+value.name+'</option>');
-                             });
-                    },
-                });
-            } else {
-                alert('danger');
-            }
+        $(document).ready(function() {
+            $('#categorySelect').on('change', function() {
+                console.log('object')
+                var category_id = $(this).val();
+                if (category_id) {
+                    $.ajax({
+                        url: "{{ url('/get/subcategory/') }}/" + category_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            console.log(data);
+                            $("#subcategory_id").empty();
+                            $.each(data, function(key, value) {
+                                $("#subcategory_id").append('<option value="' + value
+                                    .id + '">' + value.name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
         });
-    });
-
     </script>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#districtSelect').on('change', function() {
-            
-            var district_id = $(this).val();
-            if(district_id) {
-                $.ajax({
-                    url: "{{  url('/get/subdistricts/') }}/"+district_id,
-                    type:"GET",
-                    dataType:"json",
-                    success:function(data) {
-                        console.log(data);
-                         $("#subdistrict_id").empty();
-                             $.each(data,function(key,value){
-                                 $("#subdistrict_id").append('<option value="'+value.id+'">'+value.subdistrict_bn+'</option>');
-                             });
-                    },
-                });
-            } else {
-                alert('danger');
-            }
-        });
-    });
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#districtSelect').on('change', function() {
 
+                var district_id = $(this).val();
+                if (district_id) {
+                    $.ajax({
+                        url: "{{ url('/get/subdistricts/') }}/" + district_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            console.log(data);
+                            $("#subdistrict_id").empty();
+                            $.each(data, function(key, value) {
+                                $("#subdistrict_id").append('<option value="' + value
+                                    .id + '">' + value.subdistrict_bn + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+        });
     </script>
 @endsection
