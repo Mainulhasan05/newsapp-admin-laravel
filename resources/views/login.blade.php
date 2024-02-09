@@ -39,11 +39,11 @@
                     <form action={{ route('login') }} method="post" id="login_form">
                         @csrf
                         <div class="mb-3">
-                            <input class="form-control rounded-0" placeholder="E-mail" type="email" name="email" id="email">
+                            <input value="{{ old('email') }}" class="form-control rounded-0" placeholder="E-mail" type="email" name="email" id="email">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="mb-3">
-                            <input class="form-control rounded-0" placeholder="Password" type="password" name="password" id="password">
+                            <input value="{{ old('password') }}" class="form-control rounded-0" placeholder="Password" type="password" name="password" id="password">
                             <div class="invalid-feedback"></div>
                         </div>
 
