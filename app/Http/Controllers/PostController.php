@@ -88,7 +88,9 @@ class PostController extends Controller
         $post=Post::find($id);
         $categories=Categories::select('id', 'name')->whereNull('parent_id')->get();
         $districts=Districts::select('id', 'district_bn')->get();
-        return view('post.edit',compact('post', 'categories', 'districts'));
+        $subcategories=Categories::select('id', 'name')->where('parent_id', $post->category_id)->get();
+        $subdistricts=Subdistricts::select('id','subdistrict_bn')->where('district_id', $post->district_id)->get();
+        return view('post.edit',compact('post', 'categories', 'districts', 'subcategories', 'subdistricts'));
     }
 
     public function update(Request $request, $id){
