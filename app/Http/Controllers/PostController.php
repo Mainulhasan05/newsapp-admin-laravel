@@ -44,6 +44,8 @@ class PostController extends Controller
         $post->sub_district_id=$request->subdistrict_id;
         $post->tags_bn=$request->tags_bn;
         $post->title_en=$request->title_en;
+        $post->user_id=auth()->user()->id;
+        
         // check image
         if($request->hasFile('image')){
             $image = $request->file('image');

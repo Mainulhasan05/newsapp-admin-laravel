@@ -46,5 +46,7 @@
             </div>
         </div>    
     </div>
-    {{ $categories->links() }}
+    <div class="text-center">
+        {{ $categories->links() }}
+    </div>
 @endsection

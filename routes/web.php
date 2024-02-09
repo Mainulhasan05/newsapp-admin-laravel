@@ -7,11 +7,15 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\SubdistrictController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {
     return view('login');
 });
+
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
