@@ -12,6 +12,7 @@ use App\Models\Post;
  
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Imagick\Driver;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -103,6 +104,7 @@ class PostController extends Controller
         ]);
         $post=Post::find($id);
         $post->title_bn=$request->title_bn;
+        $post->slug = Str::slug($request->title_bn);
         $post->description_bn=$request->description_bn;
         $post->description_en=$request->description_en;
         $post->category_id=$request->category_id;
