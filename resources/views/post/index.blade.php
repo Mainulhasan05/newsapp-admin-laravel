@@ -28,8 +28,8 @@
                     <tbody>
                         @foreach($posts as $article)
                             <tr>
-                                <td>{{$article->category->name}}</td>
-                                <td>{{$article->sub_category->name}}</td>
+                                <td>{{$article->category?->name}}</td>
+                                <td>{{$article->sub_category?->name}}</td>
                                 <td>{{ $article->title_bn }}</td>
                                 
                                 <td>
