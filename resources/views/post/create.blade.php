@@ -112,7 +112,10 @@
                         <input type="checkbox" name="headline" id="is_header" class="">
                         <label for="is_header">Is Headline</label>
                     </div>
-
+                    <div class="form-group">
+                        <input type="checkbox" name="big_thumbnail" id="is_big_thumbnail" class="">
+                        <label for="is_big_thumbnail">Is Big Thumbnail</label>
+                    </div>
                     <div class="form-group">
                         <input type="checkbox" name="first_sectrion" id="is_featured" class="">
                         <label for="is_featured">Is First Section</label>
@@ -128,22 +131,7 @@
                         <input type="number" name="views" id="views" class="form-control" value="0">
                     </div>
 
-                    <div class="form-group">
-                        <label for="og_image">OG Image</label>
-                        <input type="text" name="og_image" id="og_image" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="og_title">OG Title</label>
-                        <input type="text" name="og_title" id="og_title" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="og_description">OG Description</label>
-                        <textarea name="og_description" id="og_description" class="form-control" rows="4"></textarea>
-                    </div>
-
-
+                    
 
                     <button type="submit" class="btn btn-primary">Create</button>
                 </form>

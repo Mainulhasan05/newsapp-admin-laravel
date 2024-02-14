@@ -58,6 +58,7 @@ class PostController extends Controller
         $post->headline=$request->has('headline')?1:0;
         $post->first_sectrion=$request->has('first_sectrion')?1:0;
         $post->first_section_thumbnail=$request->has('first_section_thumbnail')?1:0;
+        $post->big_thumbnail=$request->has('big_thumbnail')?1:0;
         // $post->user_id=auth()->user()->id;
         $post->save();
         return redirect()->back()->with('success', 'Post created successfully');
@@ -92,44 +93,48 @@ class PostController extends Controller
         $subcategories=Categories::select('id', 'name')->where('parent_id', $post->category_id)->get();
         $subdistricts=Subdistricts::select('id','subdistrict_bn')->where('district_id', $post->district_id)->get();
         return view('post.edit',compact('post', 'categories', 'districts', 'subcategories', 'subdistricts'));
+        // return response()->json($post);
     }
 
     public function update(Request $request, $id){
-        $validate=$request->validate([
-            'title_bn'=>'required',
-            'description_bn'=>'required',
-            'category_id'=>'required',
-            'district_id'=>'required',
-            // 'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-        $post=Post::find($id);
-        $post->title_bn=$request->title_bn;
+        
+        
+        $post = Post::find($id);
+        
+        $post->title_bn = $request->title_bn;
         $post->slug = Str::slug($request->title_bn);
-        $post->description_bn=$request->description_bn;
-        $post->description_en=$request->description_en;
-        $post->category_id=$request->category_id;
-        $post->sub_category_id=$request->subcategory_id;
-        $post->district_id=$request->district_id;
-        $post->sub_district_id=$request->subdistrict_id;
-        $post->tags_bn=$request->tags_bn;
-        $post->title_en=$request->title_en;
+        $post->description_bn = $request->description_bn;
+        $post->description_en = $request->description_en;
+        $post->category_id = $request->category_id;
+        $post->sub_category_id = $request->subcategory_id;
+        $post->district_id = $request->district_id;
+        $post->sub_district_id = $request->subdistrict_id;
+        $post->tags_bn = $request->tags_bn;
+        $post->title_en = $request->title_en;
+        
         // check image
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = time().'.'.$image->getClientOriginalExtension();
             $image = ImageManager::imagick()->read($image);
-            $image=$image->resize(200, 200);
+            $image = $image->resize(200, 200);
             $destinationPath = public_path('/images');
             $image->save($destinationPath, $name);
-            $post->image=$name;          
+            $post->image = $name;          
         }
-        $post->headline=$request->has('headline')?1:0;
-        $post->first_sectrion=$request->has('first_sectrion')?1:0;
-        $post->first_section_thumbnail=$request->has('first_section_thumbnail')?1:0;
-        // $post->user_id=auth()->user()->id;
-        $post->save();
+        
+        $post->headline = $request->has('headline') ? 1 : 0;
+        $post->first_sectrion = $request->has('first_sectrion') ? 1 : 0;
+        $post->first_section_thumbnail = $request->has('first_section_thumbnail') ? 1 : 0;
+        $post->big_thumbnail = $request->has('big_thumbnail') ? 1 : 0;
+        
+        $post->user_id = auth()->user()->id;
+        
+        $post->save(); // Save changes to the database
+        
         return redirect()->back()->with('success', 'Post updated successfully');
     }
+    
 
     public function destroy(Request $request, $id){
         $post=Post::find($id);
