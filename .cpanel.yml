@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/rifatewu/python.rifatewu.xyz
+    - export DEPLOYPATH=/home/rifatewu/admin.rifatewu2.xyz
     - /bin/git --git-dir=REPO.git --work-tree=REPO pull origin main
     - /bin/chown -R rifatewu:rifatewu REPO
     - /bin/php /opt/cpanel/composer/bin/composer install --working-dir=REPO
@@ -24,7 +24,7 @@ hooks:
     # This script is executed after the build hook when a push is made to GitHub.
     # You can run any additional deployment tasks here, if needed.
     # For automatic deployment when pushing to GitHub, you can add a Git pull command here.
-    export DEPLOYPATH=/home/rifatewu/python.rifatewu.xyz
+    export DEPLOYPATH=/home/rifatewu/admin.rifatewu.xyz
     /bin/git --git-dir=REPO.git --work-tree=REPO pull origin main
     /bin/chown -R rifatewu:rifatewu REPO
     /bin/php /opt/cpanel/composer/bin/composer install --working-dir=REPO

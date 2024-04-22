@@ -26,7 +26,7 @@
                 Interface
             </div>
             
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
@@ -39,7 +39,7 @@
                         <a class="collapse-item" href="{{route('news.index')}}">View News</a>
                     </div>
                 </div>
-            </li>
+            </li> --}}
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -88,7 +88,12 @@
                 </div>
             </li>
 
-            
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('pages.index')}}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Pages</span></a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">

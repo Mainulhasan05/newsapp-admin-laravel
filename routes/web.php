@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\SubdistrictController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {
@@ -75,6 +76,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/get/subcategory/{category_id}', [PostController::class, 'getSubcategory'])->name('get.subcategory');
     Route::get('/get/subdistricts/{district_id}', [PostController::class, 'getSubdistricts'])->name('get.subdistricts');
 });
+
+// page controller
+// Display all pages
+Route::get('/pages', [PageController::class, 'index'])->name('pages.index');;
+Route::get('/pages/create', [PageController::class, 'create'])->name('pages.create');
+Route::post('/pages', [PageController::class, 'store'])->name('pages.store');
+Route::get('/pages/{page}', [PageController::class, 'show'])->name('pages.show');
+Route::get('/pages/{page}/edit', [PageController::class, 'edit'])->name('pages.edit');
+Route::put('/pages/{page}', [PageController::class, 'update'])->name('pages.update');
+Route::delete('/pages/{page}', [PageController::class, 'destroy'])->name('pages.destroy');
 
 
 
