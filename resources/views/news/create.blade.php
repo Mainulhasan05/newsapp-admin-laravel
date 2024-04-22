@@ -84,7 +84,7 @@
         tinymce.init({
             selector: 'textarea#news_description', // Update the selector to match the ID of your description textarea
             plugins: 'powerpaste advcode table lists checklist',
-            toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
+            toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table '
         });
     </script>
 @endsection
