@@ -95,6 +95,12 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link" href="{{route('users.index')}}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>রিপোর্টার</span></a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>

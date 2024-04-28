@@ -22,6 +22,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/users', [AuthController::class, 'getUsers'])->name('users.index');
+    Route::post('/users/create', [AuthController::class, 'createUser'])->name('users.create');
+    Route::post('/users/{id}/update-password', [AuthController::class, 'updatePasswordByAdmin'])->name('users.update-password');
+    Route::delete('/users/{id}/delete', [AuthController::class, 'deleteUser'])->name('users.delete');
     
     Route::get('/categories', [CategoriesController::class, 'index'])->name('categories.index');
     Route::post('/categories', [CategoriesController::class, 'store'])->name('categories.store');
