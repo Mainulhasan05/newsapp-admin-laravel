@@ -11,7 +11,6 @@ use App\Models\Post;
 // require './vendor/autoload.php';
  
 use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Imagick\Driver;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -32,8 +31,6 @@ class PostController extends Controller
             'title_bn'=>'required',
             'description_bn'=>'required',
             'category_id'=>'required',
-            // 'district_id'=>'required',
-            // 'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $post=new Post();
         $post->slug=  Str::slug($request->input('title_bn'));

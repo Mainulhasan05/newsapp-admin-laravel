@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\SubdistrictController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\API\ImageUploadController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Artisan;
 
@@ -92,7 +93,7 @@ Route::get('/pages/{page}/edit', [PageController::class, 'edit'])->name('pages.e
 Route::put('/pages/{page}', [PageController::class, 'update'])->name('pages.update');
 Route::delete('/pages/{page}', [PageController::class, 'destroy'])->name('pages.destroy');
 
-
+Route::post('/upload-image', [ImageUploadController::class,'upload']);
 
 Route::get('/cache', function() {
     $exitCode = Artisan::call('cache:clear');
