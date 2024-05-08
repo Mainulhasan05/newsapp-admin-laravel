@@ -39,7 +39,9 @@ class PostController extends Controller
         $post->save();
 
         // Redirect back or wherever appropriate
-        return redirect()->back()->with('success', 'Post published successfully.');
+        // return redirect()->back()->with('success', 'Post published successfully.');
+        // redirect to post.guest
+        return redirect()->route('post.guest')->with('success', 'Post published successfully.');
     }
     public function create(Request $request)
     {

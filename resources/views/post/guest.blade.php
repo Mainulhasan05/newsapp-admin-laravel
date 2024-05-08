@@ -44,7 +44,11 @@
                                     
                                     <a href="{{ route('post.edit', ['id' => $article->id]) }}" class="btn btn-warning">Edit</a>
                                     
-                                    <a href="{{ route('post.publish', ['id' => $article->id]) }}" class="btn btn-success">Publish</a>
+                                    <form action="{{ route('post.publish', ['id' => $article->id]) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-success">Publish</button>
+                                    </form>
+                                    
                                     <form action="{{ route('post.destroy', $article->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
