@@ -52,6 +52,7 @@
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item" href="{{route('post.create')}}">Add Post</a>
                         <a class="collapse-item" href="{{route('post.index')}}">All Posts</a>
+                        <a class="collapse-item" href="{{route('post.guest')}}">Guest Posts</a>
                     </div>
                 </div>
             </li>
